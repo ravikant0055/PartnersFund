@@ -8,8 +8,6 @@ const Dashboard = () => {
 
   const [model,Setmodel] = useState(false);
 
-  const [dataConfig, setDataConfig] = useState([]);
-
 
    const [tooldataArray, setTooldataArray] = useState([]); 
 
@@ -30,9 +28,6 @@ const Dashboard = () => {
     Setmodel(false);
   }
 
-  const getData = (d) =>{
-   setDataConfig(d);
-  }
 
   const toolbarbtn = (e) => {
     setTooldataArray(prevArray => [...prevArray, e]);
@@ -45,12 +40,12 @@ const Dashboard = () => {
         </div>
 
        <div className={`transition-transform duration-300 w-[80%] ml-[20%] relative ${isSidebarOpen ? 'transform scale-85 -translate-x-1/5 mr-[20%]' : 'transform scale-100 translate-x-0'}`}>
-         <NewPage buttonSend={dataConfig} toggleSidebar={toggleSidebar} tooldataArray={tooldataArray}/>
+         <NewPage  toggleSidebar={toggleSidebar} tooldataArray={tooldataArray}/>
        </div>
 
        <Sidebar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} />
         
-       <Configration isOpen={model} isClose={closeModel} sendData={getData}/>
+       <Configration isOpen={model} isClose={closeModel}/>
     </div>
   )
 }

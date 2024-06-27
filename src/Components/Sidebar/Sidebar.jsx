@@ -7,16 +7,13 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 
 
   const fetchedData = useSelector(state => state.button);
-
   const dispatchUpdatedValues = useDispatch();
-  
 
   const submitHandle = (e) => {
     e.preventDefault();
      const formData = new FormData(e.target);
      const{id, name,font,width,height,position,enabled,displayed, onclick,hint,query} = Object.fromEntries(formData);
      console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query);
-
      dispatchUpdatedValues(remove());
      dispatchUpdatedValues(add( Object.fromEntries(formData)));
   }
@@ -33,7 +30,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
         <div className='p-4 flex flex-col gap-5'>
           <div className='flex justify-between'>
             <label htmlFor='id'>id:</label>
-            <input type='text' name='id' placeholder='product id' className='px-1 ml-3 text-gray-800 outline-none rounded-md border-2 border-slate-200  placeholder:text-sm'/>
+            <input type='text' name='id' value={fetchedData[0]?.id} placeholder='product id' className='px-1 ml-3 text-gray-800 outline-none rounded-md border-2 border-slate-200  placeholder:text-sm'/>
           </div>
           <div className='flex justify-between '>
             <label htmlFor='name'>name:</label>
@@ -91,6 +88,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           <div className='flex gap-2 mt-3'>
             <button type='submit' className='rounded-md bg-slate-700 text-white px-3 py-1'>save</button>
             <button className='rounded-md bg-slate-700 text-white px-3 py-1'>reset</button>
+            <button className='rounded-md bg-slate-700 text-white px-3 py-1'>delete</button>
           </div>
           
         </div>

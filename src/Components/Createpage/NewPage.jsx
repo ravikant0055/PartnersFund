@@ -2,14 +2,17 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { add } from '../../Store/buttonSlice';
 
-const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
+const NewPage = ({ tooldataArray, toggleSidebar}) => {
 
   const dispatch = useDispatch();
+
   const fetchedData = useSelector(state => state.button);
+  const contData = useSelector(state => state.container);
+  console.log("con Data:",contData);
 
 
   console.log("toodata" + tooldataArray);
-  if(!buttonSend && tooldataArray.length === 0){
+  if(!contData && tooldataArray.length === 0){
     return null;
   }
 
@@ -60,23 +63,13 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
   
   return (
     <>
-    
-      {/* {
-      buttonSend.map((button, index) => (
-        <>
-        <button key={index} className='bg-blue-600 text-white px-4 py-2 rounded-lg mr-4'>
-          {button.buttonname || 'Button'} 
-        </button>
 
-        </>
-      ))} */}
 
-      {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
+   {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
     
       
-
      {
-      buttonSend.map((item,index) => ( 
+      contData.map((item,index) => ( 
         <div key={index} 
         style={{ backgroundColor: item.color, height: item.height+'px',
                  width: item.width+'px', boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
@@ -88,27 +81,15 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
                  overflow: 'hidden'
                }}>
                 
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
           {/* <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1> */}
+          <h1 className='text-2xl text-black w-fit'>ravi</h1> */}
+
+          
    
         </div>
       ))
 
-
       }
-
-     
-
-
-     
 
     </>
   )
