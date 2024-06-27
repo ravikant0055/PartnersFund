@@ -44,7 +44,7 @@ const Dashboard = () => {
          <Toolbar openModel={openModel} closeModel={closeModel}  sendData={toolbarbtn} />
         </div>
 
-       <div className={`transition-transform duration-300 w-[80%] ml-[20%] relative ${isSidebarOpen ? 'transform scale-85 -translate-x-1/5 mr-[20%]' : 'transform scale-100 translate-x-0'}`}>
+       <div className={`transition-transform duration-300 w-[80%] ml-[320px] relative ${isSidebarOpen ? 'transform scale-85 -translate-x-1/5 mr-[20%]' : 'transform scale-100 translate-x-0'}`}>
          <NewPage buttonSend={dataConfig} toggleSidebar={toggleSidebar} tooldataArray={tooldataArray}/>
        </div>
 

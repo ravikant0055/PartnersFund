@@ -1,6 +1,10 @@
 import React from 'react'
+<<<<<<< Updated upstream
 import {useDispatch, useSelector} from 'react-redux'
 import { add } from '../../Store/buttonSlice';
+=======
+import Navbar from '../Navbar/Navbar';
+>>>>>>> Stashed changes
 
 const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
 
@@ -53,6 +57,8 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
         return <textarea key={index} className='border border-slate-400 px-1' placeholder='Text Area'></textarea>;
       case 'label':
         return <label key={index}>Label</label>;
+      case 'navbar':
+        return <Navbar />
       default:
         return null;
     }

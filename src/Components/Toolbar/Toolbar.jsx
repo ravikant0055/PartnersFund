@@ -9,6 +9,9 @@ import { IoIosArrowDown } from "react-icons/io";
 const Toolbar = ({openModel,sendData }) => {
   const[show, setShow] = useState(false);
   const[show2, setShow2] = useState(false);
+
+  
+
   return (
     <div className='flex flex-col items-center'>
         <div className='text-center mt-5'>
@@ -30,7 +33,7 @@ const Toolbar = ({openModel,sendData }) => {
                <PiRectangleDashed className='text-5xl text-slate-600'/>
                <h1 className='text-slate-600 mt-1'>Container</h1>
             </div>
-            <div className='flex flex-col py-4 w-[120px] items-center bg-white rounded-lg ' onClick={openModel}> 
+            <div className='flex flex-col py-4 w-[120px] items-center bg-white rounded-lg ' onClick={()=>sendData('navbar')}> 
                <PiRectangleDashed className='text-5xl text-slate-600'/>
                <h1 className='text-slate-600 mt-1'>Navbar</h1>
             </div>
