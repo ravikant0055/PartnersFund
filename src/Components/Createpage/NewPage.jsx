@@ -1,9 +1,30 @@
 import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { add } from '../../Store/buttonSlice';
 
 const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
+
+  const dispatch = useDispatch();
+  const fetchedData = useSelector(state => state.button);
+
+
   console.log("toodata" + tooldataArray);
   if(!buttonSend && tooldataArray.length === 0){
     return null;
+  }
+
+  const buttonProperty= {
+    name: "button",
+    bgcolor: "blue",
+    textcolor:"white",
+    width: "90px",
+    height:"40px",
+    font:"16px",
+  } 
+
+  const addButtonredux = ()=>{
+  dispatch(add(buttonProperty));
+  toggleSidebar()
   }
 
   const renderContent = (tooldata, index) => {
@@ -17,8 +38,8 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
         );
       case 'button':
         return (
-          <button  key={index} onClick={toggleSidebar} className='bg-blue-600 text-white px-4 py-2 rounded-lg mr-4'>
-            Button
+          <button key={index} onClick={addButtonredux} className='bg-blue-600 text-white w-[90px] h-[40px] text-[16px] rounded-lg mr-4'>
+            {fetchedData[0]?.name||buttonProperty.name}
           </button>
         );
       case 'input':
