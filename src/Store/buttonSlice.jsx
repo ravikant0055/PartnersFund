@@ -7,10 +7,12 @@ const buttonSlice = createSlice({
     initialState,
     reducers:{
         add(state,action){
-            state.push(action.payload)
+            state = [...state, action.payload]; // Create a new array with updated state
+            return state;
         },
         remove(state,action){
-            return state.filter(item => item.id !== action.payload)
+            // return state.filter(item => item.id !== action.payload)
+            return [];
         }
     }
 

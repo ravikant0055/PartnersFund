@@ -23,11 +23,13 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
     width: "90px",
     height:"40px",
     font:"16px",
+    row:"1",
+    col:"1"
   } 
 
   const addButtonredux = ()=>{
   dispatch(add(buttonProperty));
-  toggleSidebar()
+  toggleSidebar();
   }
 
   const renderContent = (tooldata, index) => {
@@ -40,8 +42,13 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
           </div>
         );
       case 'button':
+        const buttonStyle = {
+          gridColumn: `${fetchedData[0]?.col || buttonProperty.col}`,
+          gridRow: `${fetchedData[0]?.row || buttonProperty.row}`,
+        };
         return (
-          <button key={index} onClick={addButtonredux} className='bg-blue-600 text-white w-[90px] h-[40px] text-[16px] rounded-lg mr-4'>
+          <button key={index}  style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}
+>
             {fetchedData[0]?.name||buttonProperty.name}
           </button>
         );
@@ -65,27 +72,27 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
     <>
 
 
-   {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
+   
     
       
      {
       contData.map((item,index) => ( 
         <div key={index} 
-        style={{ backgroundColor: item.color, height: item.height+'px',
-                 width: item.width+'px', boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-                 margin:'20px 20px', display:'grid', gridTemplateColumns: `repeat(${item.gridcol}, 1fr)`,
+        style={{ backgroundColor: item.color,
+                 height: item.height+'px',
+                 width: item.width+'px',
+                 boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                 margin:'20px 20px', 
+                 display:'grid', 
+                 gridTemplateColumns: `repeat(${item.gridcol}, 1fr)`,
                  gridTemplateRows: `repeat(${Math.ceil(item.length / item.gridcol)}, auto)`,
                  gap: '1rem',
                  padding: '1rem',
-                //  borderRadius: '0.5rem',
-                 overflow: 'hidden'
+                 overflow: 'hidden',
                }}>
-                
-          {/* <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1> */}
 
-          
-   
+         {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
+
         </div>
       ))
 

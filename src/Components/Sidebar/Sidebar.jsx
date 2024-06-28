@@ -7,17 +7,18 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
 
 
   const fetchedData = useSelector(state => state.button);
-  const dispatchUpdatedValues = useDispatch();
+  const dispatch = useDispatch();
 
   const submitHandle = (e) => {
     e.preventDefault();
      const formData = new FormData(e.target);
-     const{id, name,font,width,height,position,enabled,displayed, onclick,hint,query} = Object.fromEntries(formData);
-     console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query);
-     dispatchUpdatedValues(remove());
-     dispatchUpdatedValues(add( Object.fromEntries(formData)));
+     const{id, name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col} = Object.fromEntries(formData);
+     console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col);
+     dispatch(remove()); 
+     dispatch(add(Object.fromEntries(formData))); 
   }
 
+ 
   return (
     <div className={`fixed top-0 right-0 h-full w-[350px] border-l bg-slate-100 border-gray-300 transition-transform  ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
 
@@ -51,6 +52,11 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           <div className='flex justify-between '>
             <label htmlFor='position'>position:</label>
             <input type='text' name='position' defaultValue={fetchedData[0]?.position} placeholder='position' className='px-1 ml-3 text-gray-800 outline-none rounded-md border-2 border-slate-200  placeholder:text-sm'/>
+          </div>
+          <div className='flex justify-between '>
+            <label htmlFor='row-col'>grid row/col:</label>
+            <input type='text' name='row' defaultValue={fetchedData[0]?.row} placeholder='grid row' className='w-[70px] px-1 ml-3 text-gray-800 outline-none rounded-md border-2 border-slate-200  placeholder:text-sm'/>
+            <input type='text' name='col' defaultValue={fetchedData[0]?.col} placeholder='grid col' className='w-[70px] px-1 ml-3 text-gray-800 outline-none rounded-md border-2 border-slate-200  placeholder:text-sm'/>
           </div>
           <div className='flex justify-between '>
             <label>enabled:</label>
