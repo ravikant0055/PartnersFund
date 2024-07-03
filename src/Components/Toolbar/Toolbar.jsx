@@ -41,7 +41,7 @@ const Toolbar = ({openModel,sendData }) => {
         <div onClick={()=>setShow2(!show2)} className='flex bg-white w-[90%] py-3 justify-between items-center px-3 rounded-lg mt-4'>
           <h1>Elements</h1>
           <p >
-            <IoIosArrowDown style={{ transform: `rotate(${show ? 180 : 0}deg)`,transition: "all 0.25s",}}/>
+            <IoIosArrowDown style={{ transform: `rotate(${show2 ? 180 : 0}deg)`,transition: "all 0.25s",}}/>
           </p>
         </div>
 

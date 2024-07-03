@@ -45,6 +45,8 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
         const buttonStyle = {
           gridColumn: `${fetchedData[0]?.col || buttonProperty.col}`,
           gridRow: `${fetchedData[0]?.row || buttonProperty.row}`,
+          width: `${fetchedData[0]?.width || buttonProperty.width}`,
+          height: `${fetchedData[0]?.height || buttonProperty.height}`,
         };
         return (
           <button key={index}  style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}
