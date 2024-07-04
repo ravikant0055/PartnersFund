@@ -7,33 +7,18 @@ import Sidebar from '../Sidebar/Sidebar';
 const Dashboard = () => {
 
   const [model,Setmodel] = useState(false);
-
-  const [dataConfig, setDataConfig] = useState([]);
-
-
-   const [tooldataArray, setTooldataArray] = useState([]); 
-
-
-
-  // side bar code
+  const [tooldataArray, setTooldataArray] = useState([]); 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
-
   const openModel = () =>{
     Setmodel(true);
   }
-
   const closeModel = () =>{
     Setmodel(false);
   }
-
-  const getData = (d) =>{
-   setDataConfig(d);
-  }
-
   const toolbarbtn = (e) => {
     setTooldataArray(prevArray => [...prevArray, e]);
   }

@@ -1,12 +1,40 @@
 import React from 'react'
 
-const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
+const NewPage = ({ tooldataArray, toggleSidebar}) => {
+  const dispatch = useDispatch();
+
+  const fetchedData = useSelector(state => state.button);
+  const contData = useSelector(state => state.container);
+  console.log("button array:",fetchedData);
+
+
   console.log("toodata" + tooldataArray);
   if(!buttonSend && tooldataArray.length === 0){
     return null;
   }
+  
+  const buttonProperty= {
+    id: '21000',
+    name: "button",
+    bgcolor: "blue",
+    textcolor:"white",
+    width: "90px",
+    height:"40px",
+    font:"16px",
+    row:"1",
+    col:"1"
+  } 
+
+  // Generate a dynamic ID for the next button
+  const nextId = fetchedData.length > 0 ? parseInt(fetchedData[fetchedData.length - 1].id) + 1 : buttonProperty.id;
+
+  const addButtonredux = ()=>{
+   dispatch(add(buttonProperty));   //Update Redux 
+  toggleSidebar();
+  }
 
   const renderContent = (tooldata, index) => {
+    
     switch (tooldata) {
       case 'heading':
         console.log("h" + tooldata);
@@ -17,8 +45,8 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
         );
       case 'button':
         return (
-          <button  key={index} onClick={toggleSidebar} className='bg-blue-600 text-white px-4 py-2 rounded-lg mr-4'>
-            Button
+          <button key={index} id={buttonProperty.id || fetchedData[0]?.id} style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}>
+            {fetchedData[0]?.name||buttonProperty.name}
           </button>
         );
       case 'input':
@@ -39,21 +67,6 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
   
   return (
     <>
-    
-      {/* {
-      buttonSend.map((button, index) => (
-        <>
-        <button key={index} className='bg-blue-600 text-white px-4 py-2 rounded-lg mr-4'>
-          {button.buttonname || 'Button'} 
-        </button>
-
-        </>
-      ))} */}
-
-      {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
-    
-      
-
      {
       buttonSend.map((item,index) => ( 
         <div key={index} 
@@ -80,8 +93,6 @@ const NewPage = ({buttonSend, tooldataArray, toggleSidebar}) => {
    
         </div>
       ))
-
-
       }
 
      

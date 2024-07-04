@@ -9,8 +9,8 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
      const{id, name,font,width,height,position,enabled,displayed, onclick,hint,query} = Object.fromEntries(formData);
      console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query);
   }
+ 
 
-  
   return (
     <div className={`fixed top-0 right-0 h-full w-[350px] border-l bg-slate-100 border-gray-300 transition-transform  ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
      
