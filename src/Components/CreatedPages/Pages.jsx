@@ -12,10 +12,27 @@ const Pages = () => {
                 </div>
             </div>
 
-            <div className='transition-transform duration-300 w-[80%] ml-[20%] relative transform scale-100 translate-x-0'>
+            <div className='w-[80%] ml-[20%]'>
                 <div className="px-4 py-10 text-2xl font-bold text-slate-500">PAGES</div>
-                <div className='m-4'>
-                    List of Pages
+                <div className='flex flex-wrap justify-center gap-6'>
+                    <div className='flex flex-col py-16  w-[300px] items-center bg-slate-100 rounded-lg shadow-lg'>
+                        <h1 className='text-slate-600 mt-1'>A</h1>
+                    </div>
+                    <div className='flex flex-col py-16  w-[300px] items-center bg-slate-100 rounded-lg shadow-lg'>
+                        <h1 className='text-slate-600 mt-1'>B</h1>
+                    </div>
+                    <div className='flex flex-col py-16  w-[300px] items-center bg-slate-100 rounded-lg shadow-lg'>
+                        <h1 className='text-slate-600 mt-1'>C</h1>
+                    </div>
+                    <div className='flex flex-col py-16  w-[300px] items-center bg-slate-100 rounded-lg shadow-lg'>
+                        <h1 className='text-slate-600 mt-1'>D</h1>
+                    </div>
+                    <div className='flex flex-col py-16  w-[300px] items-center bg-slate-100 rounded-lg shadow-lg'>
+                        <h1 className='text-slate-600 mt-1'>E</h1>
+                    </div>
+                    <div className='flex flex-col py-16  w-[300px] items-center bg-slate-100 rounded-lg shadow-lg'>
+                        <h1 className='text-slate-600 mt-1'>F</h1>
+                    </div>
                 </div>
             </div>
         </div>
