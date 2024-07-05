@@ -1,4 +1,6 @@
 import React from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { add } from '../../Store/buttonSlice';
 
 const NewPage = ({ tooldataArray, toggleSidebar}) => {
   const dispatch = useDispatch();
@@ -9,7 +11,7 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
 
 
   console.log("toodata" + tooldataArray);
-  if(!buttonSend && tooldataArray.length === 0){
+  if(!contData && tooldataArray.length === 0){
     return null;
   }
   
@@ -29,7 +31,7 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
   const nextId = fetchedData.length > 0 ? parseInt(fetchedData[fetchedData.length - 1].id) + 1 : buttonProperty.id;
 
   const addButtonredux = ()=>{
-   dispatch(add(buttonProperty));   //Update Redux 
+  dispatch(add(buttonProperty));   //Update Redux 
   toggleSidebar();
   }
 
@@ -44,8 +46,15 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
           </div>
         );
       case 'button':
+        const buttonStyle = {
+          gridColumn: `${fetchedData[0]?.col || buttonProperty.col}`,
+          gridRow: `${fetchedData[0]?.row || buttonProperty.row}`,
+          width: `${fetchedData[0]?.width || buttonProperty.width}`,
+          height: `${fetchedData[0]?.height || buttonProperty.height}`,
+        };
         return (
-          <button key={index} id={buttonProperty.id || fetchedData[0]?.id} style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}>
+          <button key={index}  style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}
+>
             {fetchedData[0]?.name||buttonProperty.name}
           </button>
         );
@@ -67,38 +76,28 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
   
   return (
     <>
-     {
-      buttonSend.map((item,index) => ( 
+    {
+      contData.map((item,index) => ( 
         <div key={index} 
-        style={{ backgroundColor: item.color, height: item.height+'px',
-                 width: item.width+'px', boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-                 margin:'20px 20px', display:'grid', gridTemplateColumns: `repeat(${item.gridcol}, 1fr)`,
+        style={{ backgroundColor: item.color,
+                 height: item.height+'px',
+                 width: item.width+'px',
+                 boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+                 margin:'20px 20px', 
+                 display:'grid', 
+                 gridTemplateColumns: `repeat(${item.gridcol}, 1fr)`,
                  gridTemplateRows: `repeat(${Math.ceil(item.length / item.gridcol)}, auto)`,
                  gap: '1rem',
                  padding: '1rem',
-                //  borderRadius: '0.5rem',
-                 overflow: 'hidden'
+                 overflow: 'hidden',
                }}>
-                
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          {/* <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1>
-          <h1 className='text-2xl text-black w-fit'>ravi</h1>
-          <h1 className='text-2xl text-black w-fit'>Hello</h1> */}
-   
+
+         {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
+
         </div>
       ))
+
       }
-
-     
-
-
-     
 
     </>
   )
