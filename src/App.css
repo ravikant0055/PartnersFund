@@ -48,3 +48,13 @@
     display: block;
     transition: 1s;
   }
+
+  .custom-scroll {
+    /* overflow-y: auto; */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  
+  .custom-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }

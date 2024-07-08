@@ -9,6 +9,7 @@ import { CiCalendarDate } from "react-icons/ci";
 import { MdRadioButtonChecked } from "react-icons/md";
 import { IoIosCheckboxOutline } from "react-icons/io";
 import { FaToggleOn } from "react-icons/fa";
+import '../../App.css';
 const Toolbar = ({openModel,sendData }) => {
   const[show, setShow] = useState(false);
   const[show2, setShow2] = useState(false);
@@ -30,11 +31,11 @@ const Toolbar = ({openModel,sendData }) => {
 
         { show && 
         <div className='mx-5 flex gap-5 flex-wrap mt-[30px] justify-center'>
-            <div className='flex flex-col py-4 w-[120px] items-center bg-white rounded-lg ' onClick={openModel}> 
+            <div className='flex flex-col py-4 w-[110px] items-center bg-white rounded-lg ' onClick={openModel}> 
                <PiRectangleDashed className='text-5xl text-slate-600'/>
                <h1 className='text-slate-600 mt-1'>Container</h1>
             </div>
-            <div className='flex flex-col py-4 w-[120px] items-center bg-white rounded-lg ' onClick={openModel}> 
+            <div className='flex flex-col py-4 w-[110px] items-center bg-white rounded-lg ' onClick={openModel}> 
                <PiRectangleDashed className='text-5xl text-slate-600'/>
                <h1 className='text-slate-600 mt-1'>Navbar</h1>
             </div>
@@ -50,36 +51,36 @@ const Toolbar = ({openModel,sendData }) => {
         </div>
 
         { show2 && 
-            <div className='mx-5 flex gap-5 flex-wrap mt-[30px] justify-center'>
-               <div className='flex flex-col py-3 w-[120px] items-center cursor-pointer bg-white rounded-lg' onClick={()=>sendData('heading')}> 
+            <div className='mx-5 flex gap-5 flex-wrap mt-[30px] justify-center h-[240px] custom-scroll overflow-y-auto'>
+               <div className='flex flex-col py-3 w-[110px] items-center cursor-pointer bg-white rounded-lg' onClick={()=>sendData('heading')}> 
                  <RxText className='text-5xl text-slate-600'/>
                  <h1 className='text-slate-600 mt-1'>Heading</h1>
                </div>
-               <div className='flex flex-col py-3 w-[120px] items-center cursor-pointer bg-white rounded-lg ' onClick={()=>sendData('button')}> 
+               <div className='flex flex-col py-3 w-[110px] items-center cursor-pointer bg-white rounded-lg ' onClick={()=>sendData('button')}> 
                   <RxButton className='text-5xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-1'>Button</h1>
                </div>
-               <div className='flex flex-col py-4 w-[120px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('input')}> 
+               <div className='flex flex-col py-4 w-[110px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('input')}> 
                   <CiEdit className='text-5xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-1'>Input Text</h1>
                </div>
-               <div className='flex flex-col py-4 w-[120px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('date')}> 
+               <div className='flex flex-col py-4 w-[110px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('date')}> 
                   <CiCalendarDate className='text-5xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-1'>Input Date</h1>
                </div>
-               <div className='flex flex-col py-4 w-[120px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('radio')}> 
+               <div className='flex flex-col py-4 w-[110px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('radio')}> 
                   <MdRadioButtonChecked className='text-4xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-3'>Radio Button</h1>
                </div>
-               <div className='flex flex-col py-4 w-[120px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('toggle')}> 
+               <div className='flex flex-col py-4 w-[110px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('toggle')}> 
                   <FaToggleOn className='text-4xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-3'>Toggle Button</h1>
                </div>
-               <div className='flex flex-col py-4 w-[120px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('checkbox')}> 
+               <div className='flex flex-col py-4 w-[110px] items-center cursor-pointer bg-white rounded-lg'  onClick={()=>sendData('checkbox')}> 
                   <IoIosCheckboxOutline className='text-4xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-3'>Checkbox</h1>
                </div>
-               <div className='flex flex-col py-3 w-[120px] items-center cursor-pointer bg-white rounded-lg '  onClick={()=>sendData('textarera')}> 
+               <div className='flex flex-col py-3 w-[110px] items-center cursor-pointer bg-white rounded-lg '  onClick={()=>sendData('textarera')}> 
                   <BsTextareaResize className='text-4xl mt-1 text-slate-600'/>
                   <h1 className='text-slate-600 mt-3'>Text Area</h1>
                </div>

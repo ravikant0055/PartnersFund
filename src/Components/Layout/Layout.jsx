@@ -17,7 +17,7 @@ function Layout() {
   return (
     <Router>
       <div className="App">
-        <div className="header gap-8">
+        <div className="header gap-5">
           <GiHamburgerMenu onClick={() => setShowNav(!showNav)} className="menu-icon" />
           <h1 className='text-slate-900 py-4 text-4xl font-Lilita'>Partners Fund</h1>
         </div>
