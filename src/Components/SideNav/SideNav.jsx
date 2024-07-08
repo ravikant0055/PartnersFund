@@ -2,13 +2,13 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
 
-const SideNav = () => {
+const SideNav = ({ closeNav }) => {
   return (
     <div className="side-nav">
        
       <ul>
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/dashboard" onClick={closeNav}>Dashboard</Link>
         </li>
       </ul>
     </div>
