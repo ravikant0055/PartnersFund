@@ -3,20 +3,20 @@ import {useDispatch, useSelector} from 'react-redux'
 import { add } from '../../Store/buttonSlice';
 
 const NewPage = ({ tooldataArray, toggleSidebar}) => {
-
   const dispatch = useDispatch();
 
   const fetchedData = useSelector(state => state.button);
   const contData = useSelector(state => state.container);
-  console.log("con Data:",contData);
+  console.log("button array:",fetchedData);
 
 
   console.log("toodata" + tooldataArray);
   if(!contData && tooldataArray.length === 0){
     return null;
   }
-
+  
   const buttonProperty= {
+    id: '21000',
     name: "button",
     bgcolor: "blue",
     textcolor:"white",
@@ -27,12 +27,16 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
     col:"1"
   } 
 
+  // Generate a dynamic ID for the next button
+  const nextId = fetchedData.length > 0 ? parseInt(fetchedData[fetchedData.length - 1].id) + 1 : buttonProperty.id;
+
   const addButtonredux = ()=>{
-  dispatch(add(buttonProperty));
+  dispatch(add(buttonProperty));   //Update Redux 
   toggleSidebar();
   }
 
   const renderContent = (tooldata, index) => {
+    
     switch (tooldata) {
       case 'heading':
         console.log("h" + tooldata);
@@ -72,12 +76,7 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
   
   return (
     <>
-
-
-   
-    
-      
-     {
+    {
       contData.map((item,index) => ( 
         <div key={index} 
         style={{ backgroundColor: item.color,
