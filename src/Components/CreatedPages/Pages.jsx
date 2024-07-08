@@ -7,7 +7,7 @@ const Pages = () => {
             <div className='bg-slate-200 w-[20%] h-full fixed border-r border-gray-300'>
                 <div className='flex flex-col items-center'>
                     <div className='text-center mt-5'>
-                        <h1 className='text-slate-900 py-4 text-4xl font-Lilita'>Partners Fund</h1>
+                        <h1 className='text-slate-200 py-4 text-4xl font-Lilita'>Partners Fund</h1>
                     </div>
                 </div>
             </div>

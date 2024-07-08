@@ -10,6 +10,9 @@ const SideNav = ({ closeNav }) => {
         <li>
           <Link to="/dashboard" onClick={closeNav}>Dashboard</Link>
         </li>
+        <li>
+          <Link to="/pages" onClick={closeNav}>Pages</Link>
+        </li>
       </ul>
     </div>
   );

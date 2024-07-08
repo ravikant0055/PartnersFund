@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 20%;
     background-color: #e2e8f0;
     color: black;
     padding: 10px;
@@ -21,13 +21,14 @@
   
   .side-nav {
     height: 100%;
-    width: 250px; /* Adjust width as needed */
+    width: 20%; /* Adjust width as needed */
     position: fixed;
     top: 0;
     left: 0;
     background-color: #e2e8f0;
-    padding-top: 60px; /* Add padding to push content below header */
+    padding-top: 80px; /* Add padding to push content below header */
     z-index: 999; /* Ensure side-nav is below the header */
+    transition: left 0.3s ease; 
   }
   
   .side-nav ul {
@@ -45,11 +46,5 @@
     font-size: large;
     color: black;
     display: block;
-    transition: 0.3s;
-  }
-
-  
-  .content {
-    padding: 20px;
-    margin-top: 60px; /* Ensure content is pushed below header */
+    transition: 1s;
   }

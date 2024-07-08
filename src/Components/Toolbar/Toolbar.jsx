@@ -12,7 +12,7 @@ const Toolbar = ({openModel,sendData }) => {
   return (
     <div className='flex flex-col items-center'>
         <div className='text-center mt-5'>
-            <h1 className='text-slate-900 py-4 text-4xl font-Lilita'>Partners Fund</h1>
+            <h1 className='text-slate-200 py-4 text-4xl font-Lilita'>Partners Fund</h1>
         </div>
 
         {/* Layout */}
