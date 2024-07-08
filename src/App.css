@@ -1,0 +1,50 @@
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%;
+    background-color: #e2e8f0;
+    color: black;
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .menu-icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  
+  .side-nav {
+    height: 100%;
+    width: 20%; /* Adjust width as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #e2e8f0;
+    padding-top: 80px; /* Add padding to push content below header */
+    z-index: 999; /* Ensure side-nav is below the header */
+    transition: left 0.3s ease; 
+  }
+  
+  .side-nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .side-nav li {
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .side-nav li a {
+    font-weight: bold;
+    font-size: large;
+    color: black;
+    display: block;
+    transition: 1s;
+  }
