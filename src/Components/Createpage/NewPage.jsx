@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { add } from '../../Store/buttonSlice';
 
@@ -8,6 +8,13 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
   const fetchedData = useSelector(state => state.button);
   const contData = useSelector(state => state.container);
   console.log("button array:",fetchedData);
+
+
+
+  const [isToggled, setIsToggled] = useState(false);
+  const toggleButton = () => {
+    setIsToggled(!isToggled);
+  };
 
   console.log("toodata" + tooldataArray);
   if(!contData && tooldataArray.length === 0){
@@ -82,11 +89,27 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
       case 'toggle':
         return (
               <div key={index} className='mt-2 cursor-pointer' onClick={toggleSidebar}>
-                <h1 className='text-xl'>Toggle</h1>
+                       <button
+                        className={`relative rounded-full w-12 h-7 transition-colors duration-300 ${isToggled ? 'bg-blue-500' : 'bg-gray-300'}`}
+                        onClick={toggleButton}>
+                        <span
+                          className={`absolute left-1 top-1 inline-block w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${isToggled ? 'translate-x-5' : 'translate-x-0'}`}>
+                        </span>
+                      </button>
               </div>
-              );        
+              );
+      case 'checkbox':
+        return (
+            <div key={index} className='flex flex-col' onClick={toggleSidebar}>
+              <label htmlFor="op1"> <input type="checkbox" name='op1'/> Option 1</label>
+              <label htmlFor="op2"> <input type="checkbox" name='op2'/> Option 2</label>
+              <label htmlFor="op3"> <input type="checkbox" name='op3'/> Option 3</label>
+            </div>
+        );               
       case 'textarea':
-        return <textarea key={index} className='border border-slate-400 px-1' placeholder='Text Area'></textarea>;
+        return (
+                  <textarea key={index} className='border h-fit border-slate-400 px-1' placeholder='Text Area'></textarea>
+           );
       default:
         return null;
     }
@@ -109,7 +132,7 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
                  padding: '1rem',
                  overflow: 'hidden',
                }}>
-
+                
          {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
 
         </div>

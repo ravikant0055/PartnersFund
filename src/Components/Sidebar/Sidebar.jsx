@@ -12,6 +12,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
     e.preventDefault();
      const formData = new FormData(e.target);
      const{id, name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col} = Object.fromEntries(formData);
+     console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col);
      dispatch(remove()); 
      dispatch(add(Object.fromEntries(formData))); 
   }

@@ -79,7 +79,7 @@ const Toolbar = ({openModel,sendData }) => {
                   <IoIosCheckboxOutline className='text-4xl text-slate-600'/>
                   <h1 className='text-slate-600 mt-3'>Checkbox</h1>
                </div>
-               <div className='flex flex-col py-3 w-[120px] items-center cursor-pointer bg-white rounded-lg '  onClick={()=>sendData('textarera')}> 
+               <div className='flex flex-col py-3 w-[120px] items-center cursor-pointer bg-white rounded-lg '  onClick={()=>sendData('textarea')}> 
                   <BsTextareaResize className='text-4xl mt-1 text-slate-600'/>
                   <h1 className='text-slate-600 mt-3'>Text Area</h1>
                </div>
