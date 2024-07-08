@@ -9,7 +9,6 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
   const contData = useSelector(state => state.container);
   console.log("button array:",fetchedData);
 
-
   console.log("toodata" + tooldataArray);
   if(!contData && tooldataArray.length === 0){
     return null;
@@ -53,22 +52,41 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
           height: `${fetchedData[0]?.height || buttonProperty.height}`,
         };
         return (
-          <button key={index}  style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}
+          <button key={index} style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}
 >
             {fetchedData[0]?.name||buttonProperty.name}
           </button>
         );
       case 'input':
         return (
-          <div key={index} onClick={toggleSidebar} className='flex gap-5 mt-2 cursor-pointer'>
+          <div key={index} onClick={toggleSidebar} className='flex h-fit gap-5 mt-2 cursor-pointer'>
             <label>Label:</label>
             <input type='text' placeholder='Text' className='border border-slate-400 px-1' />
           </div>
         );
+      case 'date':
+        return ( 
+              <div key={index} onClick={toggleSidebar} className='h-fit flex gap-5 mt-2 cursor-pointer'>
+                  <input type='date' className='border border-slate-400 px-1' />
+              </div>);
+      case 'radio':
+        return ( 
+              <div className='flex gap-3 h-fit'>
+                  <label>label:</label>
+                  <div className='flex items-center w-[190px] gap-5'>
+                    <label htmlFor='required'><input type='radio' name='required' className='mr-1'/>option 1</label>
+                    <label htmlFor='required'><input type='radio' name='required' className='mr-1'/>option 2</label>
+                  </div>
+              </div>
+              );
+      case 'toggle':
+        return (
+              <div key={index} className='mt-2 cursor-pointer' onClick={toggleSidebar}>
+                <h1 className='text-xl'>Toggle</h1>
+              </div>
+              );        
       case 'textarea':
         return <textarea key={index} className='border border-slate-400 px-1' placeholder='Text Area'></textarea>;
-      case 'label':
-        return <label key={index}>Label</label>;
       default:
         return null;
     }
