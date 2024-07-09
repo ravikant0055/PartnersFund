@@ -14,6 +14,7 @@ const Dashboard = () => {
   const dispatch = useDispatch() ; 
   const fetchedData = useSelector(state => state.button);
   
+  const [editingId , setEditingId] = useState(null) ; 
   const [nextId , setNextId] = useState(fetchedData.length > 0 ? parseInt(fetchedData[fetchedData.length - 1].id) + 1 : 0)
   const [tooldataArray, setTooldataArray] = useState([]);
 
@@ -39,8 +40,12 @@ const Dashboard = () => {
     col:"1"
   } 
 
-  const toggleSidebar = () => {
+  const toggleSidebar = (data) => {
+    
+    isSidebarOpen ? setEditingId(null) :  setEditingId(data.id)
     setIsSidebarOpen(!isSidebarOpen);
+
+    // console.log(editingId)
   };
 
   const openModel = () => {
@@ -55,7 +60,7 @@ const Dashboard = () => {
 
   const toolbarbtn = (e) => {
     // console.log(e , "tool bar value") ; 
-    setTooldataArray((prevArray) => [...prevArray, e]);
+    setTooldataArray((prevArray) => [...prevArray, {e , id : nextId}]);
     dispatch(add(buttonProperty));   //Update Redux 
     // toggleSidebar();
   };
@@ -71,7 +76,7 @@ const Dashboard = () => {
         <NewPage toggleSidebar={toggleSidebar} tooldataArray={tooldataArray} nextId={nextId} />
       </div>
 
-      <Sidebar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} closeSidebar={toggleSidebar} editingId = {editingId} setTooldataArray={setTooldataArray} />
 
       <Configration isOpen={model} isClose={closeModel} />
     </div>

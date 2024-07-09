@@ -3,17 +3,18 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../../Store/buttonSlice';
 
-const Sidebar = ({ isOpen, closeSidebar }) => {
+const Sidebar = ({ isOpen, closeSidebar , editingId , setTooldataArray }) => {
 
   const fetchedData = useSelector(state => state.button);
   const dispatch = useDispatch();
+
+  
 
   const submitHandle = (e) => {
     e.preventDefault();
      const formData = new FormData(e.target);
      const{id, name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col} = Object.fromEntries(formData);
-     console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col);
-     dispatch(remove()); 
+    //  console.log("mydata",id,name,font,width,height,position,enabled,displayed, onclick,hint,query,row,col);
      dispatch(add(Object.fromEntries(formData))); 
   }
  
@@ -148,7 +149,7 @@ const Sidebar = ({ isOpen, closeSidebar }) => {
           <div className='flex gap-2 mt-3'>
             <button type='submit' className='rounded-md bg-slate-700 text-white px-3 py-1'>save</button>
             <button className='rounded-md bg-slate-700 text-white px-3 py-1'>reset</button>
-            <button className='rounded-md bg-slate-700 text-white px-3 py-1'>delete</button>
+            <button type="button" className='rounded-md  bg-slate-700 text-white px-3 py-1 ' onClick={()=>{ dispatch(remove(editingId)); setTooldataArray(prev => prev.filter(item => item.id != editingId)) }} >delete</button>
           </div>
           
         </div>
