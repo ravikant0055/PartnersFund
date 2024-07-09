@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { add } from '../../Store/buttonSlice';
 
-const NewPage = ({ tooldataArray, toggleSidebar}) => {
+const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
   const dispatch = useDispatch();
 
   const fetchedData = useSelector(state => state.button);
   const contData = useSelector(state => state.container);
   console.log("button array:",fetchedData);
+  console.log("container array:", contData) ; 
 
 
 
@@ -16,13 +17,13 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
     setIsToggled(!isToggled);
   };
 
-  console.log("toodata" + tooldataArray);
+  console.log("tooldata" , tooldataArray);
   if(!contData && tooldataArray.length === 0){
     return null;
   }
   
   const buttonProperty= {
-    id: '21000',
+    id: nextId,
     name: "button",
     bgcolor: "blue",
     textcolor:"white",
@@ -34,10 +35,9 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
   } 
 
   // Generate a dynamic ID for the next button
-  const nextId = fetchedData.length > 0 ? parseInt(fetchedData[fetchedData.length - 1].id) + 1 : buttonProperty.id;
 
   const addButtonredux = ()=>{
-  dispatch(add(buttonProperty));   //Update Redux 
+  // dispatch(add(buttonProperty));    //Update Redux 
   toggleSidebar();
   }
 
@@ -52,14 +52,14 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
           </div>
         );
       case 'button':
-        const buttonStyle = {
-          gridColumn: `${fetchedData[0]?.col || buttonProperty.col}`,
-          gridRow: `${fetchedData[0]?.row || buttonProperty.row}`,
-          width: `${fetchedData[0]?.width || buttonProperty.width}`,
-          height: `${fetchedData[0]?.height || buttonProperty.height}`,
-        };
+        // const buttonStyle = {
+        //   gridColumn: `${fetchedData[0]?.col || buttonProperty.col}`,
+        //   gridRow: `${fetchedData[0]?.row || buttonProperty.row}`,
+        //   width: `${fetchedData[0]?.width || buttonProperty.width}`,
+        //   height: `${fetchedData[0]?.height || buttonProperty.height}`,
+        // };
         return (
-          <button key={index} style={buttonStyle} onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] h-[${fetchedData[0]?.height||buttonProperty.height}] text-[16px] rounded-lg mr-4`}
+          <button key={index}  onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] w-[90px] h-[${fetchedData[0]?.height||buttonProperty.height}] h-[40px] text-[16px] rounded-lg mr-4`}
 >
             {fetchedData[0]?.name||buttonProperty.name}
           </button>
@@ -134,6 +134,7 @@ const NewPage = ({ tooldataArray, toggleSidebar}) => {
                }}>
                 
          {tooldataArray.map((tooldata, index) => renderContent(tooldata, index))}
+         {/* {tooldataArray.map((tooldata, index) => console.log(tooldata , index))} */}
 
         </div>
       ))

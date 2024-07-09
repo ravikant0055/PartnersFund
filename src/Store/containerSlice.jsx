@@ -7,11 +7,12 @@ const containerSlice = createSlice({
     initialState,
     reducers:{
         addCon(state,action){
-            console.log('Reducer addCon called with:', action.payload);
+            // console.log('Reducer addCon called with:', action.payload);
             state.push(action.payload)
         },
         removeCon(state,action){
-            return state.filter(item => item.id !== action.payload)
+             return  state.filter(item => item.id !== action.payload)
+            // state = filtered ;
         }
     }
 
