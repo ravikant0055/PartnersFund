@@ -6,9 +6,6 @@ import Sidebar from "../Sidebar/Sidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../../Store/buttonSlice";
 
-
-
-
 const Dashboard = () => {
   const [model, Setmodel] = useState(false);
   const dispatch = useDispatch() ; 

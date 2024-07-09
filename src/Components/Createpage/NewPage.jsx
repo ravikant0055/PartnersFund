@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import { add } from '../../Store/buttonSlice';
+import {useSelector} from 'react-redux'
 
 const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
-  const dispatch = useDispatch();
 
   const fetchedData = useSelector(state => state.button);
   const contData = useSelector(state => state.container);
@@ -33,8 +31,6 @@ const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
     row:"1",
     col:"1"
   } 
-
-  // Generate a dynamic ID for the next button
 
   const addButtonredux = ()=>{
   // dispatch(add(buttonProperty));    //Update Redux 
