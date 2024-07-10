@@ -34,13 +34,13 @@ return (
 <div className='p-3 flex flex-col gap-7 mt-5'>
 <label>Container Name : <input type='text' className='bg-slate-200 w-[200px] py-1 px-2 rounded-md outline-none' name='conname' /></label>
 <div className='flex gap-6'>
-<label>Height : <input type='number' min="100" className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='height' /></label>
-<label>Width : <input type='number' min="100" className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='width' /></label>
+<label>Height : <input type='number' min="400" className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='height' /></label>
+<label>Width : <input type='number' min="800" className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='width' /></label>
 <label>Background Color : <input type='color' className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='color' defaultValue={'#ffffff'} /></label>
 </div>
 <div className='flex gap-6'>
-<label>Grid Columns : <input type='nymber' className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='gridcol' /></label>
-<label>Grid Rows : <input type='nymber' className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='gridrow' /></label>
+<label>Grid Columns : <input type='nymber' defaultValue='4' className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='gridcol' /></label>
+<label>Grid Rows : <input type='nymber' defaultValue='4' className='bg-slate-200 w-[60px] py-1 px-2 rounded-md outline-none' name='gridrow' /></label>
 </div>
 </div>
 

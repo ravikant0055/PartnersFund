@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {useSelector} from 'react-redux'
 
-const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
+const NewPage = ({ tooldataArray, toggleSidebar}) => {
 
   const fetchedData = useSelector(state => state.button);
   const contData = useSelector(state => state.container);
@@ -21,7 +21,7 @@ const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
   }
   
   const buttonProperty= {
-    id: nextId,
+    
     name: "button",
     bgcolor: "blue",
     textcolor:"white",
@@ -32,18 +32,13 @@ const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
     col:"1"
   } 
 
-  const addButtonredux = ()=>{
-  // dispatch(add(buttonProperty));    //Update Redux 
-  toggleSidebar();
-  }
-
   const renderContent = (tooldata, index) => {
     
-    switch (tooldata) {
+    switch (tooldata.e) {
       case 'heading':
         console.log("h" + tooldata);
         return (
-          <div key={index} className='mt-2 cursor-pointer' onClick={toggleSidebar}>
+          <div key={index} className='mt-2 cursor-pointer' onClick={()=>toggleSidebar(tooldata)}>
             <h1 className='text-xl'>Heading</h1>
           </div>
         );
@@ -55,21 +50,21 @@ const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
         //   height: `${fetchedData[0]?.height || buttonProperty.height}`,
         // };
         return (
-          <button key={index}  onClick={addButtonredux} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] w-[90px] h-[${fetchedData[0]?.height||buttonProperty.height}] h-[40px] text-[16px] rounded-lg mr-4`}
+          <button key={index} onClick={()=>toggleSidebar(tooldata)} className={`bg-blue-600 text-white w-[${fetchedData[0]?.width||buttonProperty.width}] w-[90px] h-[${fetchedData[0]?.height||buttonProperty.height}] h-[40px] text-[16px] rounded-lg mr-4`}
 >
             {fetchedData[0]?.name||buttonProperty.name}
           </button>
         );
       case 'input':
         return (
-          <div key={index} onClick={toggleSidebar} className='flex h-fit gap-5 mt-2 cursor-pointer'>
+          <div key={index} onClick={()=>toggleSidebar(tooldata)} className='flex h-fit gap-5 mt-2 cursor-pointer'>
             <label>Label:</label>
             <input type='text' placeholder='Text' className='border border-slate-400 px-1' />
           </div>
         );
       case 'date':
         return ( 
-              <div key={index} onClick={toggleSidebar} className='h-fit flex gap-5 mt-2 cursor-pointer'>
+              <div key={index} onClick={()=>toggleSidebar(tooldata)} className='h-fit flex gap-5 mt-2 cursor-pointer'>
                   <input type='date' className='border border-slate-400 px-1' />
               </div>);
       case 'radio':
@@ -84,7 +79,7 @@ const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
               );
       case 'toggle':
         return (
-              <div key={index} className='mt-2 cursor-pointer' onClick={toggleSidebar}>
+              <div key={index} className='mt-2 cursor-pointer' onClick={()=>toggleSidebar(tooldata)}>
                        <button
                         className={`relative rounded-full w-12 h-7 transition-colors duration-300 ${isToggled ? 'bg-blue-500' : 'bg-gray-300'}`}
                         onClick={toggleButton}>
@@ -96,7 +91,7 @@ const NewPage = ({ tooldataArray, toggleSidebar , nextId}) => {
               );
       case 'checkbox':
         return (
-            <div key={index} className='flex flex-col' onClick={toggleSidebar}>
+            <div key={index} className='flex flex-col' onClick={()=>toggleSidebar(tooldata)}>
               <label htmlFor="op1"> <input type="checkbox" name='op1'/> Option 1</label>
               <label htmlFor="op2"> <input type="checkbox" name='op2'/> Option 2</label>
               <label htmlFor="op3"> <input type="checkbox" name='op3'/> Option 3</label>
