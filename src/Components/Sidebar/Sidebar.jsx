@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { add, remove } from '../../Store/buttonSlice';
@@ -7,33 +7,76 @@ const Sidebar = ({ isOpen, closeSidebar, editingId, setTooldataArray }) => {
   const dispatch = useDispatch();
   const fetchedData = useSelector(state => state.button);
 
-  const [formData, setFormData] = useState({
-    id: fetchedData[0]?.id || '',
-    name: fetchedData[0]?.name || '',
-    font: fetchedData[0]?.font || '',
-    width: fetchedData[0]?.width || '',
-    height: fetchedData[0]?.height || '',
-    position: fetchedData[0]?.position || '',
-    enabled: '',
-    displayed: '',
-    onclick: '',
-    hint: '',
-    query: '',
-    row: fetchedData[0]?.row || '',
-    col: fetchedData[0]?.col || '',
-    bgcolor: '#ffffff',
-    textcolor: '#ffffff',
-    required: '',
-    onchange: '',
-    value: '',
-    vobjname: '',
-    vobjcol: '',
-    eobjname: '',
-    eobjcol: '',
-    maxlength: '',
-    alt: '',
-    src: '',
+
+  console.log("sidebar data",fetchedData);
+  const [formData, setFormData] = useState(() => {
+    // Find the item in fetchedData that matches the editingId
+    const editingItem = fetchedData.find(item => item.id === editingId);
+    // Initialize formData with editingItem values if found, otherwise default values
+    return {
+      id: editingItem?.id || '',
+      name: editingItem?.name || '',
+      font: editingItem?.font || '',
+      width: editingItem?.width || '',
+      height: editingItem?.height || '',
+      position: editingItem?.position || '',
+      enabled: '',
+      displayed: '',
+      onclick: '',
+      hint: '',
+      query: '',
+      row: editingItem?.row || '',
+      col: editingItem?.col || '',
+      bgcolor: editingItem?.bgcolor || '#ffffff',
+      textcolor: editingItem?.textcolor || '#ffffff',
+      required: '',
+      onchange: '',
+      value: '',
+      vobjname: '',
+      vobjcol: '',
+      eobjname: '',
+      eobjcol: '',
+      maxlength: '',
+      alt: '',
+      src: '',
+    };
   });
+  
+  // Update formData.name when editingId changes
+  useEffect(() => {
+    const editingItem = fetchedData.find(item => item.id === editingId);
+    if (editingItem) {
+      setFormData(prevFormData => ({
+        ...prevFormData,
+        
+      name: editingItem.name ,
+      font: editingItem.font ,
+      width: editingItem.width ,
+      height: editingItem.height ,
+      position: editingItem.position ,
+      enabled: editingItem.enabled ,
+      displayed: editingItem.displayed ,
+      onclick: editingItem.onclick ,
+      hint: editingItem.hint ,
+      query: editingItem.query ,
+      row: editingItem.row ,
+      col: editingItem.col ,
+      bgcolor: editingItem.bgcolor,
+      textcolor: editingItem.textcolor,
+      required: editingItem.required ,
+      onchange: editingItem.onchange ,
+      value: editingItem.value ,
+      vobjname: editingItem.vobjname ,
+      vobjcol: editingItem.vobjcol ,
+      eobjname: editingItem.eobjname ,
+      eobjcol: editingItem.eobjcol ,
+      maxlength: editingItem.maxlength ,
+      alt: editingItem.alt ,
+      src: editingItem.src ,
+        // Add other fields you want to update here if needed
+      }));
+    }
+  }, [editingId, fetchedData]);
 
   const submitHandle = e => {
     e.preventDefault();
@@ -198,7 +241,7 @@ const Sidebar = ({ isOpen, closeSidebar, editingId, setTooldataArray }) => {
           <div className='flex gap-2 mt-3'>
             <button type='submit' className='rounded-md bg-slate-700 text-white px-3 py-1'>save</button>
             <button className='rounded-md bg-slate-700 text-white px-3 py-1' onClick={handleReset}>reset</button>
-            <button type="button" className='rounded-md bg-slate-700 text-white px-3 py-1' onClick={() => { dispatch(remove(editingId)); setTooldataArray(prev => prev.filter(item => item.id != editingId)) }}>delete</button>
+            <button type="button" className='rounded-md bg-slate-700 text-white px-3 py-1' onClick={() => { dispatch(remove(editingId)); setTooldataArray(prev => prev.filter(item => item.id !== editingId)) }}>delete</button>
           </div>
 
         </div>
